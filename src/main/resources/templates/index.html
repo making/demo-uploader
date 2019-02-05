@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Uploader</title>
+    <link rel="stylesheet" href="../static/pui-components-17.1.0.css" data-th-href="@{/pui-components-17.1.0.css}">
+    <style>
+        .content {
+            padding: 32px
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <form class="form" enctype="multipart/form-data" data-th-action="@{/upload}" method="post">
+        <fieldset>
+            <div>
+                <div class="form-unit">
+                    <div class="grid grid-nogutter label-row">
+                        <div class="col">
+                            <input type="file" name="file" id="file" class=""/>
+                        </div>
+                        <div class="col">
+                            <input class="pui-btn pui-btn-primary btn btn-primary" type="submit" aria-label="Subscribe" value="Upload"/>
+                        </div>
+                        <div class="col col-fixed col-middle post-label"></div>
+                    </div>
+
+
+                    <div class="help-row type-dark-5"></div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <table class="table table-no-ext-borders">
+        <thead>
+        <tr>
+            <th>Path</th>
+            <th>Size</th>
+            <th>LastModified</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="file : ${files}">
+            <td><code>[[${file.absolutePath}]]</code></td>
+            <td>[[${@formatter.size(file.length())}]]</td>
+            <td>[[${@formatter.dateTime(file.lastModified())}]]</td>
+        </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
+</body>
+</html>
