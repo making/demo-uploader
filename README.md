@@ -51,6 +51,8 @@ az storage share create \
     --output none     
 ```
 
+### Deploy the application
+
 
 ```
 ./mvnw clean package -DskipTests=true
